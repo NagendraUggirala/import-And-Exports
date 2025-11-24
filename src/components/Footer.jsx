@@ -9,6 +9,8 @@ const Footer = () => {
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
     { path: "/services", label: "Services" },
+    { path: "/industries", label: "Industries" },
+    { path: "/blog", label: "Blog" },
     { path: "/contact", label: "Contact" }
   ];
 
@@ -146,18 +148,18 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-gradient-to-b from-gray-900 to-[#081526] text-white">
+      <footer className="bg-gradient-to-b from-blue-900 to-[#093a7a] text-white">
         <div className="container mx-auto px-6">
           
           {/* Main Footer Content */}
           <div className="py-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-6 mb-6">
               
               {/* Company Info */}
-              <div className="text-left">
-                <div className="flex items-start space-x-4 mb-4">
+              <div className="text-left md:col-span-4">
+                <div className="flex items-center space-x-3 mb-4">
                   {/* Founder Image and Logo */}
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-2 flex-shrink-0">
                     <div className="w-16 h-16 rounded-full border-2 border-orange-200 overflow-hidden shadow-lg">
                       <img
                         src="/images/image.png"
@@ -173,12 +175,13 @@ const Footer = () => {
                       />
                     </div>
                   </div>
-                  <div className="text-left">
-                    <h2 className="text-2xl font-bold">
+                  {/* Text immediately to the side */}
+                  <div className="flex flex-col">
+                    <h2 className="text-xl md:text-2xl font-bold">
                       <span className="text-orange-400">ANAND</span> 
                       <span className="text-white"> IMPORTS & EXPORTS</span>
                     </h2>
-                    <p className="text-orange-200 text-sm italic">"Connecting Markets. Delivering Excellence."</p>
+                    <p className="text-orange-200 text-xs md:text-sm italic">"Connecting Markets. Delivering Excellence."</p>
                   </div>
                 </div>
 
@@ -190,32 +193,10 @@ const Footer = () => {
                     We specialize in the smooth movement of quality goods across borders, ensuring reliability, transparency, and value in every transaction.
                   </p>
                 </div>
-
-                {/* Social Media with SVG Icons */}
-                <div className="flex space-x-3">
-                  {[
-                    { name: "facebook", url: "#", color: "hover:bg-blue-600" },
-                    { name: "twitter", url: "#", color: "hover:bg-blue-400" },
-                    { name: "instagram", url: "#", color: "hover:bg-pink-600" },
-                    { name: "youtube", url: "#", color: "hover:bg-red-600" },
-                    { name: "linkedin", url: "#", color: "hover:bg-blue-800" }
-                  ].map((social, i) => (
-                    <a
-                      key={i}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white transition-all duration-300 hover:scale-110 ${social.color}`}
-                      title={social.name.charAt(0).toUpperCase() + social.name.slice(1)}
-                    >
-                      {SocialIcons[social.name]}
-                    </a>
-                  ))}
-                </div>
               </div>
 
               {/* Quick Links */}
-              <div className="text-left">
+              <div className="text-left md:col-span-2 md:pl-6">
                 <h3 className="text-lg font-semibold mb-3 text-orange-400">Quick Links</h3>
                 <div className="space-y-2">
                   {quickLinks.map((link, index) => (
@@ -231,7 +212,7 @@ const Footer = () => {
               </div>
 
               {/* Contact Info */}
-              <div className="text-left">
+              <div className="text-left md:col-span-3 md:pl-4">
                 <h3 className="text-lg font-semibold mb-3 text-orange-400">Contact</h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex flex-col items-start space-y-2">
@@ -254,6 +235,31 @@ const Footer = () => {
                       <span className="text-gray-300">info@anandimportsexports.com</span>
                     </div>
                   </div>
+                </div>
+              </div>
+
+              {/* Follow Us Section */}
+              <div className="text-left md:col-span-3 md:pl-4">
+                <h3 className="text-lg font-semibold mb-3 text-orange-400">Follow Us</h3>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    { name: "facebook", url: "#", color: "hover:bg-blue-600" },
+                    { name: "twitter", url: "#", color: "hover:bg-blue-400" },
+                    { name: "instagram", url: "#", color: "hover:bg-pink-600" },
+                    { name: "youtube", url: "#", color: "hover:bg-red-600" },
+                    { name: "linkedin", url: "#", color: "hover:bg-blue-800" }
+                  ].map((social, i) => (
+                    <a
+                      key={i}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white transition-all duration-300 hover:scale-110 ${social.color}`}
+                      title={social.name.charAt(0).toUpperCase() + social.name.slice(1)}
+                    >
+                      {SocialIcons[social.name]}
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
