@@ -1,6 +1,9 @@
 import { CheckCircle2, Shield, Clock, Users, TrendingUp, Award } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const WhyChooseUs = () => {
+  const [visibleCards, setVisibleCards] = useState({});
+  const cardsRef = useRef([]);
   const reasons = [
     {
       icon: CheckCircle2,
@@ -40,6 +43,34 @@ const WhyChooseUs = () => {
     },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = entry.target.dataset.index;
+            setVisibleCards((prev) => ({ ...prev, [index]: true }));
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    cardsRef.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      cardsRef.current.forEach((card) => {
+        if (card) observer.unobserve(card);
+      });
+    };
+  }, []);
+
   return (
     <section className="py-8 mt-5 md:pb-8 bg-gradient-to-b from-background via-secondary/10 to-background relative overflow-hidden">
       {/* Decorative Background */}
@@ -64,32 +95,27 @@ const WhyChooseUs = () => {
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="group bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-scale-in border border-gray-100 hover:border-transparent relative overflow-hidden"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              ref={(el) => (cardsRef.current[index] = el)}
+              data-index={index}
+              className={`group bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 relative overflow-hidden scroll-animate-scale-from-small ${
+                visibleCards[index] ? "scroll-animate-scale-from-small-visible" : ""
+              }`}
+              style={{ transitionDelay: `${index * 0.15}s` }}
             >
-              {/* Gradient Background on Hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${reason.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}></div>
-              
-              {/* Animated Border Gradient on Hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${reason.gradient} opacity-0 group-hover:opacity-20 rounded-2xl blur-xl transition-opacity duration-300 -z-10`}></div>
-              
               {/* Icon */}
-              <div className={`relative z-10 w-16 h-16 bg-gradient-to-br ${reason.gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-125 transition-all duration-300 shadow-md group-hover:shadow-xl`}>
-                <reason.icon className="h-8 w-8 text-white group-hover:scale-110 transition-transform duration-300" />
+              <div className={`relative z-10 w-16 h-16 bg-gradient-to-br ${reason.gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-md group-hover:shadow-xl`}>
+                <reason.icon className="h-8 w-8 text-white transition-transform duration-300" />
               </div>
               
               {/* Content */}
               <div className="relative z-10">
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300">
+                <h3 className="text-xl font-bold text-foreground mb-3 transition-all duration-300">
                   {reason.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-muted-foreground leading-relaxed transition-colors duration-300">
                   {reason.description}
                 </p>
               </div>
-              
-              {/* Bottom Accent Line on Hover */}
-              <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${reason.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-2xl`}></div>
             </div>
           ))}
         </div>

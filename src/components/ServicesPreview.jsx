@@ -1,9 +1,14 @@
 import { Button } from "./ui/button";
 import { Ship, Truck, Package, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 
 const ServicesPreview = () => {
   const navigate = useNavigate();
+  const [visibleCards, setVisibleCards] = useState({});
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+  const headerRef = useRef(null);
+  const cardsRef = useRef([]);
 
   const services = [
     {
@@ -29,10 +34,60 @@ const ServicesPreview = () => {
     },
   ];
 
+  useEffect(() => {
+    // Header animation observer
+    const headerObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsHeaderVisible(true);
+          headerObserver.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    // Cards animation observer
+    const cardsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = entry.target.dataset.index;
+            setVisibleCards((prev) => ({ ...prev, [index]: true }));
+            cardsObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    if (headerRef.current) {
+      headerObserver.observe(headerRef.current);
+    }
+
+    cardsRef.current.forEach((card) => {
+      if (card) cardsObserver.observe(card);
+    });
+
+    return () => {
+      if (headerRef.current) {
+        headerObserver.unobserve(headerRef.current);
+      }
+      cardsRef.current.forEach((card) => {
+        if (card) cardsObserver.unobserve(card);
+      });
+    };
+  }, []);
+
   return (
     <section className="bg-gradient-to-b from-background to-secondary/10 relative overflow-hidden pb-8 md:pb-5">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-5 animate-fade-in">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-5 scroll-animate ${isHeaderVisible ? "scroll-animate-visible" : ""}`}
+        >
           <h2 className="text-3xl font-bold text-foreground mb-2 tracking-tight">
             Our Core Services
           </h2>
@@ -46,13 +101,18 @@ const ServicesPreview = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-border/50 hover:border-primary/30 cursor-pointer"
+              ref={(el) => (cardsRef.current[index] = el)}
+              data-index={index}
+              className={`group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-2 border-border/50 cursor-pointer scroll-animate-scale ${
+                visibleCards[index] ? "scroll-animate-scale-visible" : ""
+              }`}
+              style={{ transitionDelay: `${index * 0.1}s` }}
               onClick={() => navigate("/services")}
             >
               <div className={`w-16 h-16 ${service.bgColor} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                 <service.icon className={`h-8 w-8 ${service.color}`} />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+              <h3 className="text-xl font-bold text-foreground mb-2 transition-all duration-300">
                 {service.title}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">

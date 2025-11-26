@@ -31,6 +31,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 z-0"
         style={{
+         filter: "brightness(0.7)",
           backgroundImage: `url(./images/hero-banner.jpg)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -38,7 +39,7 @@ const Hero = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/85 to-primary/70"></div>
         <div 
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-50"
           style={{
             background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(255,255,255,0.3) 0%, transparent 50%)`,
             transition: "background 0.3s ease-out",
@@ -112,9 +113,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Enhanced Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background via-background/80 to-transparent z-10"></div>
-      
       {/* Scroll Indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">

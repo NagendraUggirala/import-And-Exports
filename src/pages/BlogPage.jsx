@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
+import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const BlogPage = () => {
@@ -12,7 +12,8 @@ const BlogPage = () => {
       category: "Trade Regulations",
       date: "March 15, 2024",
       readTime: "5 min read",
-      image: "📋",
+      image: "./images/Trades.jpg",
+      isImage: true,
     },
     {
       id: 2,
@@ -21,7 +22,8 @@ const BlogPage = () => {
       category: "Business Tips",
       date: "March 10, 2024",
       readTime: "7 min read",
-      image: "🤝",
+      image: "./images/Bussinesstips.jpg",
+      isImage: true,
     },
     {
       id: 3,
@@ -30,7 +32,8 @@ const BlogPage = () => {
       category: "Market Insights",
       date: "March 5, 2024",
       readTime: "6 min read",
-      image: "🌍",
+      image: "./images/Market.jpg",
+      isImage: true,
     },
     {
       id: 4,
@@ -39,7 +42,8 @@ const BlogPage = () => {
       category: "Logistics",
       date: "February 28, 2024",
       readTime: "8 min read",
-      image: "📦",
+      image: "./images/logistics.jpg",
+      isImage: true,
     },
     {
       id: 5,
@@ -48,7 +52,8 @@ const BlogPage = () => {
       category: "Industry Trends",
       date: "February 22, 2024",
       readTime: "6 min read",
-      image: "🚀",
+      image: "./images/indusrty.jpg",
+      isImage: true,
     },
     {
       id: 6,
@@ -57,30 +62,28 @@ const BlogPage = () => {
       category: "Documentation",
       date: "February 18, 2024",
       readTime: "5 min read",
-      image: "📄",
+      image: "./images/Documentation.jpg",
+      isImage: true,
     },
   ];
 
   return (
     <div className="min-h-screen">
-      <section className="pb-24 bg-gradient-to-b from-secondary/30 via-background to-secondary/20 relative overflow-hidden">
+      <section className="py-12 bg-gradient-to-b from-secondary/30 via-background to-secondary/20 relative overflow-hidden">
           {/* Background Decoration */}
           <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl"></div>
           
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-16 animate-fade-in">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6">
-                <BookOpen className="h-8 w-8 text-primary" />
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 -mt-4">
+            <div className="text-center mb-10 animate-fade-in">
+              <div className="inline-block px-3 py-1.5 bg-primary/10 rounded-full mb-3">
+                <span className="text-xs font-semibold text-primary">Blog & News</span>
               </div>
-              <div className="inline-block px-4 py-2 bg-primary/10 rounded-full mb-4">
-                <span className="text-sm font-semibold text-primary">Blog & News</span>
-              </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 tracking-tight">
                 Latest News & Insights
-              </h1>
-              <div className="w-32 h-1.5 bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto rounded-full mb-8"></div>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              </h3>
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto rounded-full mb-4"></div>
+              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Stay informed with the latest trends, insights, and updates from the world of international trade
               </p>
             </div>
@@ -91,9 +94,19 @@ const BlogPage = () => {
                   key={post.id}
                   className="border-2 border-border/50 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-sm group overflow-hidden"
                 >
-                  <div className="h-48 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-500">
-                    {post.image}
-                  </div>
+                  {post.isImage ? (
+                    <div className="h-48 overflow-hidden group-hover:scale-110 transition-transform duration-500">
+                      <img 
+                        src={post.image} 
+                        alt={post.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="h-48 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-500">
+                      {post.image}
+                    </div>
+                  )}
                   <CardHeader>
                     <div className="flex items-center gap-3 text-sm text-muted-foreground mb-2">
                       <span className="px-3 py-1 bg-primary/10 text-primary rounded-full font-medium">

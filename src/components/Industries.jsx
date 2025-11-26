@@ -1,58 +1,91 @@
-import { ShoppingBag, Utensils, Cpu, Shirt, Layers, Heart, Home, Box } from "lucide-react";
+import { Package, ChefHat, Monitor, Shirt, Factory, Activity, Sofa, Globe } from "lucide-react";
 
 const Industries = () => {
   const industries = [
-    { icon: ShoppingBag, label: "Consumer Goods", color: "from-blue-500 to-primary" },
-    { icon: Utensils, label: "Food Products & FMCG", color: "from-amber-500 to-brand-gold" },
-    { icon: Cpu, label: "Electronics & Hardware", color: "from-purple-500 to-primary" },
-    { icon: Shirt, label: "Textiles & Garments", color: "from-pink-500 to-brand-orange" },
-    { icon: Layers, label: "Industrial Materials", color: "from-gray-600 to-primary" },
-    { icon: Heart, label: "Health & Wellness", color: "from-red-500 to-brand-orange" },
-    { icon: Home, label: "Lifestyle & Household", color: "from-green-500 to-brand-gold" },
-    { icon: Box, label: "General Trading", color: "from-orange-500 to-brand-orange" },
+    { 
+      icon: Package, 
+      label: "Consumer Goods", 
+      description: "Essential for every consumer's daily needs"
+    },
+    { 
+      icon: ChefHat, 
+      label: "Food Products & FMCG", 
+      description: "Key to every food quality standard"
+    },
+    { 
+      icon: Monitor, 
+      label: "Electronics & Hardware", 
+      description: "Crucial for every technological advancement"
+    },
+    { 
+      icon: Shirt, 
+      label: "Textiles & Garments", 
+      description: "Integral to every textile innovation"
+    },
+    { 
+      icon: Factory, 
+      label: "Industrial Materials", 
+      description: "Foundation for every industrial growth"
+    },
+    { 
+      icon: Activity, 
+      label: "Health & Wellness", 
+      description: "Crucial for every healthcare advancement"
+    },
+    { 
+      icon: Sofa, 
+      label: "Lifestyle & Household", 
+      description: "Essential for every lifestyle enhancement"
+    },
+    { 
+      icon: Globe, 
+      label: "General Trading", 
+      description: "Vital for every business expansion"
+    },
   ];
 
   return (
-    <section id="industries" className="py-24 bg-gradient-to-b from-background to-secondary/20 relative overflow-hidden">
+    <section id="industries" className="py-12 bg-gradient-to-b from-background to-secondary/20 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5 bg-grid-pattern"></div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-20 animate-fade-in">
-          <div className="inline-block px-4 py-2 bg-primary/10 rounded-full mb-4">
-            <span className="text-sm font-semibold text-primary">Industries</span>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 -mt-4">
+        <div className="text-center mb-10 animate-fade-in">
+          <div className="inline-block px-3 py-1.5 bg-primary/10 rounded-full mb-3">
+            <span className="text-xs font-semibold text-primary">Industries</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
+          <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 tracking-tight">
             Industries We Serve
-          </h2>
-          <div className="w-32 h-1.5 bg-gradient-to-r from-transparent via-brand-gold to-transparent mx-auto rounded-full mb-8"></div>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          </h3>
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-brand-orange to-transparent mx-auto rounded-full mb-4"></div>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Providing trusted trading solutions across diverse sectors worldwide
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="group relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 animate-scale-in text-center cursor-pointer border-2 border-transparent hover:border-primary/20 overflow-hidden"
+              className="group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-scale-in border border-gray-100 overflow-hidden"
               style={{ animationDelay: `${index * 0.08}s` }}
             >
-              {/* Gradient Background on Hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
-              
               {/* Icon Container */}
-              <div className="relative z-10 w-20 h-20 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg group-hover:shadow-xl">
-                <industry.icon className="h-10 w-10 text-primary group-hover:scale-110 transition-transform duration-300" />
+              <div className="relative z-10 w-16 h-16 flex items-center justify-start mb-4">
+                <div className="w-12 h-12 rounded-lg bg-brand-orange/10 flex items-center justify-center group-hover:bg-brand-orange/20 transition-colors duration-300">
+                  <industry.icon className="h-6 w-6 text-brand-orange" strokeWidth={2} />
+                </div>
               </div>
               
               {/* Label */}
-              <h3 className="relative z-10 text-base font-bold text-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
+              <h3 className="relative z-10 text-lg font-bold text-foreground mb-2 transition-all duration-300">
                 {industry.label}
               </h3>
               
-              {/* Hover Effect Line */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+              {/* Description */}
+              <p className="relative z-10 text-sm text-muted-foreground leading-relaxed">
+                {industry.description}
+              </p>
             </div>
           ))}
         </div>
