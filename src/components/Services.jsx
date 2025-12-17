@@ -1,3 +1,4 @@
+// src/components/Services.jsx
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Ship, Truck, Package, ArrowRight, X } from "lucide-react";
