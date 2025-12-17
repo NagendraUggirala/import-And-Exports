@@ -1,3 +1,4 @@
+// src/pages/IndustriesPage.jsx
 import Industries from "../components/Industries";
 
 const IndustriesPage = () => {
