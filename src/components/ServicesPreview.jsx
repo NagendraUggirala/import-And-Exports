@@ -1,3 +1,4 @@
+// src/components/ServicesPreview.jsx
 import { Button } from "./ui/button";
 import { Ship, Truck, Package, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -141,4 +142,3 @@ const ServicesPreview = () => {
 };
 
 export default ServicesPreview;
-
