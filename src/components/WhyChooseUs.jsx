@@ -1,3 +1,4 @@
+// src/components/WhyChooseUs.jsx
 import { CheckCircle2, Shield, Clock, Users, TrendingUp, Award } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
