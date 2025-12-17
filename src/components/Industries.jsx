@@ -1,3 +1,4 @@
+// src/components/Industries.jsx
 import { Package, ChefHat, Monitor, Shirt, Factory, Activity, Sofa, Globe } from "lucide-react";
 
 const Industries = () => {
