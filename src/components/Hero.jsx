@@ -1,3 +1,4 @@
+// src/components/Hero.jsx
 import { Button } from "./ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
