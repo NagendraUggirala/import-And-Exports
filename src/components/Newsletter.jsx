@@ -1,3 +1,4 @@
+// src/components/Newsletter.jsx
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Mail, Send } from "lucide-react";
