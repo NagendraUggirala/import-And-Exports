@@ -17,6 +17,7 @@ const Testimonials = () => {
   ];
 
   const testimonials = [
+    // 01
     {
       name: "Rajesh Kumar",
       company: "Tech Imports Ltd.",
@@ -28,6 +29,7 @@ const Testimonials = () => {
       years: 5,
       industry: "Electronics"
     },
+    // 02
     {
       name: "Sarah Johnson",
       company: "Global Distribution Corp",
@@ -39,6 +41,7 @@ const Testimonials = () => {
       years: 3,
       industry: "FMCG"
     },
+    // 03
     {
       name: "Michael Chen",
       company: "Pacific Trading Group",
@@ -50,6 +53,7 @@ const Testimonials = () => {
       years: 4,
       industry: "Textiles"
     },
+    // 04
     {
       name: "Priya Sharma",
       company: "Eastern Exports Co.",
@@ -61,6 +65,7 @@ const Testimonials = () => {
       years: 6,
       industry: "Consumer Goods"
     },
+    // 05
     {
       name: "David Williams",
       company: "International Ventures",
@@ -72,7 +77,7 @@ const Testimonials = () => {
       years: 2,
       industry: "Industrial Materials"
     },
-    // NEW ADDITIONAL TESTIMONIALS
+    // 06
     {
       name: "Aisha Al-Mansoori",
       company: "Middle East Trading House",
@@ -84,6 +89,7 @@ const Testimonials = () => {
       years: 3,
       industry: "Health & Wellness"
     },
+    // 07
     {
       name: "Kenji Tanaka",
       company: "Tokyo Electronics Inc.",
@@ -95,6 +101,7 @@ const Testimonials = () => {
       years: 4,
       industry: "Electronics"
     },
+    // 08
     {
       name: "Maria Rodriguez",
       company: "European Lifestyle Brands",
@@ -106,6 +113,7 @@ const Testimonials = () => {
       years: 2,
       industry: "Lifestyle Goods"
     },
+    // 09
     {
       name: "Arjun Patel",
       company: "AgriPro Exports",
@@ -117,6 +125,7 @@ const Testimonials = () => {
       years: 5,
       industry: "Food Products"
     },
+    // 10
     {
       name: "Sophie Martin",
       company: "Paris Fashion Imports",
@@ -197,8 +206,7 @@ const Testimonials = () => {
   return (
     <section 
       className="py-12 mt-5 pb-16 md:pb-20 bg-gradient-to-b from-background via-secondary/10 to-background relative overflow-hidden"
-      id="testimonials"
-    >
+      id="testimonials">
       {/* Background Decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -245,14 +253,12 @@ const Testimonials = () => {
               align: "start",
               loop: true,
             }}
-            className="w-full"
-          >
+            className="w-full">
             <CarouselContent className="-ml-2 md:-ml-4">
               {testimonials.map((testimonial, index) => (
                 <CarouselItem 
                   key={index} 
-                  className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3"
-                >
+                  className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                   <Card 
                     className={`
                       border-2 border-border/50 shadow-xl hover:shadow-2xl 
