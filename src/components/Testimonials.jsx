@@ -1,3 +1,4 @@
+// src/components/Testimonials.jsx
 import { Card, CardContent } from "./ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import { Quote, Star } from "lucide-react";
