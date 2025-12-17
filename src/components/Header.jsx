@@ -17,7 +17,7 @@ const Header = () => {
     
     { path: "/services", label: "Services" },
     { path: "/industries", label: "Industries" },
-    { path: "/blog", label: "Blog" },
+    // { path: "/blog", label: "Blog" },
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" },
   ];
@@ -28,8 +28,7 @@ const Header = () => {
     <header
       className={`sticky top-0 z-40 transition-all duration-300 
       bg-white border-b 
-      ${isScrolled ? "shadow-md border-gray-200" : "border-gray-100"}`}
-    >
+      ${isScrolled ? "shadow-md border-gray-200" : "border-gray-100"}`}>
       <div className="container mx-auto px-4">
         {/* Row */}
         <div className="flex justify-between items-center py-3 md:py-4">
@@ -72,8 +71,7 @@ const Header = () => {
                   isActiveLink(item.path)
                     ? "text-blue-700 bg-blue-100 border border-blue-200"
                     : "text-blue-800 hover:bg-blue-50 hover:text-blue-700"
-                }`}
-              >
+                }`}>
                 {item.label}
               </Link>
             ))}
@@ -82,15 +80,13 @@ const Header = () => {
           {/* Mobile menu button - Right Side */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 md:p-3 text-blue-800 hover:bg-blue-50 rounded-lg transition-all duration-200 order-2"
-          >
+            className="lg:hidden p-2 md:p-3 text-blue-800 hover:bg-blue-50 rounded-lg transition-all duration-200 order-2">
             {isMenuOpen ? (
               <svg
                 className="w-6 h-6 md:w-7 md:h-7"
                 fill="none"
                 stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+                viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -103,8 +99,7 @@ const Header = () => {
                 className="w-6 h-6 md:w-7 md:h-7"
                 fill="none"
                 stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+                viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -129,8 +124,7 @@ const Header = () => {
                     isActiveLink(item.path)
                       ? "bg-blue-100 text-blue-700 border border-blue-200"
                       : "text-blue-800 hover:bg-blue-50 hover:text-blue-700"
-                  }`}
-                >
+                  }`}>
                   {item.label}
                 </Link>
               ))}

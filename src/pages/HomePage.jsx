@@ -3,6 +3,7 @@ import WhyChooseUs from "../components/WhyChooseUs";
 import ServicesPreview from "../components/ServicesPreview";
 import Testimonials from "../components/Testimonials";
 import Newsletter from "../components/Newsletter";
+import BlogPage from "./BlogPage";
 
 const HomePage = () => {
   return (
@@ -10,6 +11,7 @@ const HomePage = () => {
       <Hero />
       <WhyChooseUs />
       <ServicesPreview />
+      <BlogPage />
       <Testimonials />
       <Newsletter />
     </div>
