@@ -1,3 +1,4 @@
+// src/components/Footer.jsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -203,8 +204,7 @@ const Footer = () => {
                     <Link
                       key={index}
                       to={link.path}
-                      className="block text-gray-300 py-1 text-sm hover:text-orange-400 transition-all duration-200"
-                    >
+                      className="block text-gray-300 py-1 text-sm hover:text-orange-400 transition-all duration-200">
                       {link.label}
                     </Link>
                   ))}
@@ -255,8 +255,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white transition-all duration-300 hover:scale-110 ${social.color}`}
-                      title={social.name.charAt(0).toUpperCase() + social.name.slice(1)}
-                    >
+                      title={social.name.charAt(0).toUpperCase() + social.name.slice(1)}>
                       {SocialIcons[social.name]}
                     </a>
                   ))}
@@ -282,8 +281,7 @@ const Footer = () => {
                   <button
                     key={item}
                     onClick={() => openLegalModal(item)}
-                    className="text-gray-500 hover:text-orange-400 transition-colors text-sm font-medium hover:underline"
-                  >
+                    className="text-gray-500 hover:text-orange-400 transition-colors text-sm font-medium hover:underline">
                     {item}
                   </button>
                 ))}
@@ -314,8 +312,7 @@ const Footer = () => {
                 </h3>
                 <button
                   onClick={closeLegalModal}
-                  className="text-gray-500 hover:text-gray-700 text-2xl"
-                >
+                  className="text-gray-500 hover:text-gray-700 text-2xl">
                   ×
                 </button>
               </div>
@@ -328,8 +325,7 @@ const Footer = () => {
               <div className="flex justify-end mt-6">
                 <button
                   onClick={closeLegalModal}
-                  className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-200"
-                >
+                  className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-200">
                   Close
                 </button>
               </div>
