@@ -1,3 +1,4 @@
+// src/pages/Landinformation.jsx
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useEffect } from 'react';
